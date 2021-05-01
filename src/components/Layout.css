@@ -1,0 +1,24 @@
+.background {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 0;
+  background-color: #708e7a;
+}
+
+.forestImg {
+  image-rendering: pixelated;
+  height: 100%;
+}
+
+.content {
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+}
