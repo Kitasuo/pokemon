@@ -8,8 +8,34 @@
     -1px 1px 0 #111, 1px 1px 0 #111;
 }
 
+.name {
+  position: absolute;
+  text-align: center;
+  font-family: PKMN;
+  font-size: 20px;
+  color: #adadad;
+  margin: auto;
+  top: 275px;
+  left: 340px;
+  bottom: 0;
+  right: 0;
+  text-transform: capitalize;
+}
+
+.number {
+  position: absolute;
+  text-align: center;
+  font-family: PKMN;
+  font-size: 20px;
+  color: #213123;
+  margin: auto;
+  top: 510px;
+  left: 0;
+  bottom: 0;
+  right: 370px;
+}
+
 .frame {
-  border: 0;
   float: center;
   position: relative;
 }
@@ -24,7 +50,6 @@
 }
 
 .sprite {
-  border: 0;
   position: absolute;
   margin-top: 200px;
   width: 200px;
