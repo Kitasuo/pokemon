@@ -4,17 +4,23 @@ import "./PokeDex.css";
 
 function PokeDex() {
   const [poke, setPoke] = React.useState([]);
+  const [pokeId, setPokeId] = React.useState(1);
 
-  const fetchPokes = async () => {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/1`);
-    const data = await response.json();
-    setPoke(data);
-  };
   React.useEffect(() => {
+    const fetchPokes = async () => {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokeId}`
+      );
+      const data = await response.json();
+      setPoke(data);
+    };
     fetchPokes();
-  }, []);
+  }, [pokeId]);
 
-  console.log(poke);
+  const randomPoke = () => {
+    setPokeId(Math.floor(Math.random() * (898 - 1) + 1));
+    console.log(pokeId);
+  };
 
   return (
     <>
@@ -26,6 +32,7 @@ function PokeDex() {
           src={poke.sprites && poke.sprites.front_default}
           alt="pokemon"
           className="sprite"
+          onClick={() => randomPoke()}
         />
         <img src={dex} alt="pokedex" className="pokeDex" />
       </div>
