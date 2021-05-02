@@ -1,15 +1,11 @@
 import React from "react";
 import "./Layout.css";
-import forest from "../assets/images/forest.png";
 
 function Layout({ children }) {
   return (
-    <>
-      <div className="background">
-        <img src={forest} alt="forest" className="forestImg" />
-      </div>
+    <div className="background">
       <div className="content">{children}</div>
-    </>
+    </div>
   );
 }
 
