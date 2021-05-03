@@ -1,6 +1,7 @@
 import React from "react";
 import dex from "../../assets/images/pokedex.png";
 import "./PokeDex.css";
+import { Link } from "react-router-dom";
 
 function PokeDex() {
   const [poke, setPoke] = React.useState(null);
@@ -19,9 +20,10 @@ function PokeDex() {
   }, [pokeId]);
 
   const randomPoke = () => {
-    if (Math.random() > 0.01) {
+    if (Math.random() > 0.02) {
       setWobble(1);
     } else {
+      localStorage.setItem(poke.id, JSON.stringify(poke));
       setPokeId(Math.floor(Math.random() * (898 - 1) + 1));
       setWobble(0);
     }
@@ -31,6 +33,9 @@ function PokeDex() {
     <>
       <div className="header">Gotta click 'em all!</div>
       <div className="frame">
+        <Link to="/list">
+          <div className="link"></div>
+        </Link>
         <div className="name">{poke?.name ?? ""}</div>
         <div className="number">{poke?.id ?? ""}</div>
         <img

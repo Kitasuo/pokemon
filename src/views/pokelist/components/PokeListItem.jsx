@@ -1,16 +1,17 @@
 import React from "react";
 import "./PokeListItem.css";
 
-function PokeListItem() {
+function PokeListItem({ pokemon }) {
+  // console.log(pokemon.name);
   return (
     <div className="listBox">
       <img
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/512.png"
+        src={pokemon.sprites.front_default}
         alt="pokeman"
         className="listSprite"
       />
-      <div className="listName">Pokomon</div>
-      <div className="listName">001</div>
+      <div className="listName">{pokemon.name}</div>
+      <div className="listName">{pokemon.id}</div>
     </div>
   );
 }

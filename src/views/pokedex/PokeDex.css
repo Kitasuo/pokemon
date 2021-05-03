@@ -8,6 +8,17 @@
     -1px 1px 0 #111, 1px 1px 0 #111;
 }
 
+.link {
+  position: absolute;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  top: 0px;
+  left: 0px;
+  bottom: 370px;
+  right: 500px;
+}
+
 .name {
   position: absolute;
   text-align: center;
