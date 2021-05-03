@@ -1,0 +1,22 @@
+.listBox {
+  width: 120px;
+  height: 120px;
+  background-color: #85cfff;
+  border-color: #2b2b2b;
+  border-style: solid;
+  border-width: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.listSprite {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.listName {
+  font-size: 10px;
+  text-align: center;
+  font-family: PKMN;
+}

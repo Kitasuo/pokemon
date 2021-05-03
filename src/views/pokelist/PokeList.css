@@ -1,0 +1,29 @@
+.listFrame {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.listDex {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  width: 500px;
+  image-rendering: pixelated;
+}
+
+.listContainer {
+  display: grid;
+  box-sizing: border-box;
+  background-color: #dedede;
+  width: 500px;
+  margin: auto;
+  grid-template-columns: 135px 135px 135px;
+  border-style: solid;
+  border-color: #dc0a2d;
+  border-width: 17px;
+  column-gap: 15px;
+  justify-content: center;
+  justify-items: center;
+}
