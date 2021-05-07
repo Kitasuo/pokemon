@@ -3,15 +3,12 @@ import listDex from "../../assets/images/pokedexList.png";
 import "./PokeList.css";
 import PokeListItem from "./components/PokeListItem";
 import { Link } from "react-router-dom";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
-function PokeList() {
-  // Returns array of values in localstorage
-  var arrayOfValues = Object.values(localStorage);
-  // Parse each item of list from string to obj
-  var pokemonList = arrayOfValues.map((obj) => {
-    let rObj = JSON.parse(obj);
-    return rObj;
-  });
+const PokeList = () => {
+  const [caughtPokemons] = useLocalStorage("pokeDexCaught", []);
+
+  caughtPokemons.sort((a, b) => a.id - b.id);
 
   return (
     <div className="listFrame">
@@ -20,12 +17,12 @@ function PokeList() {
       </Link>
       <img src={listDex} alt="pokelist" className="listDex" />
       <div className="listContainer">
-        {pokemonList.map((pokemon) => (
+        {caughtPokemons.map((pokemon) => (
           <PokeListItem key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default PokeList;

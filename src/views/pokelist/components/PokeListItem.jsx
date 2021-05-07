@@ -1,8 +1,7 @@
 import React from "react";
 import "./PokeListItem.css";
 
-function PokeListItem({ pokemon }) {
-  // console.log(pokemon.name);
+const PokeListItem = ({ pokemon }) => {
   return (
     <div className="listBox">
       <img
@@ -14,6 +13,6 @@ function PokeListItem({ pokemon }) {
       <div className="listName">{pokemon.id}</div>
     </div>
   );
-}
+};
 
 export default PokeListItem;

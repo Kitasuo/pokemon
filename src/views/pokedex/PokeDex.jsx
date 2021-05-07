@@ -2,30 +2,40 @@ import React from "react";
 import dex from "../../assets/images/pokedex.png";
 import "./PokeDex.css";
 import { Link } from "react-router-dom";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { reducer } from "./reducer";
+
+const defaultState = {
+  pokeId: 1,
+  wobble: 0,
+};
 
 function PokeDex() {
   const [poke, setPoke] = React.useState(null);
-  const [pokeId, setPokeId] = React.useState(1);
-  const [wobble, setWobble] = React.useState(0);
+  const [state, dispatch] = React.useReducer(reducer, defaultState);
+
+  const [caughtPokemons, setCaughtPokemons] = useLocalStorage(
+    "pokeDexCaught",
+    []
+  );
 
   React.useEffect(() => {
     const fetchPokes = async () => {
       const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokeId}`
+        `https://pokeapi.co/api/v2/pokemon/${state.pokeId}`
       );
       const data = await response.json();
       setPoke(data);
     };
     fetchPokes();
-  }, [pokeId]);
+  }, [state.pokeId]);
 
   const randomPoke = () => {
-    if (Math.random() > 0.02) {
-      setWobble(1);
+    if (Math.random() > 0.05) {
+      dispatch({ type: "APPLY_WOBBLE" });
     } else {
-      localStorage.setItem(poke.id, JSON.stringify(poke));
-      setPokeId(Math.floor(Math.random() * (898 - 1) + 1));
-      setWobble(0);
+      setCaughtPokemons([...caughtPokemons, poke]);
+      dispatch({ type: "CHANGE_POKEID" });
     }
   };
 
@@ -43,8 +53,8 @@ function PokeDex() {
           alt="pokemon"
           className="sprite"
           onClick={() => randomPoke()}
-          onAnimationEnd={() => setWobble(0)}
-          wobble={wobble}
+          onAnimationEnd={() => dispatch({ type: "REMOVE_WOBBLE" })}
+          wobble={state.wobble}
         />
         <img src={dex} alt="pokedex" className="pokeDex" />
       </div>
